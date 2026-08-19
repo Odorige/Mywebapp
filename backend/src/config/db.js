@@ -5,15 +5,24 @@ const { Pool } = require('pg');
 // ============================================================
 //
 // Local Docker:
-//     PGHOST=postgres
-//     PGSSL=false
+//   PGHOST=postgres
+//   PGPORT=5432
+//   PGUSER=clipwave
+//   PGPASSWORD=clipwave_pw
+//   PGDATABASE=clipwave
+//   PGSSL=false
 //
 // Azure PostgreSQL:
-//     PGHOST=<azure-postgres-host>
-//     PGSSL=true
+//   PGHOST=<azure-postgres-host>
+//   PGPORT=5432
+//   PGUSER=clipwave
+//   PGPASSWORD=<azure-password>
+//   PGDATABASE=clipwave
+//   PGSSL=true
 //
-// The same application code therefore works in both
-// environments.
+// Database configuration is supplied through environment
+// variables so no environment-specific credentials are
+// hard-coded into the application.
 //
 // ============================================================
 
@@ -22,14 +31,17 @@ const pool = new Pool({
   // ----------------------------------------------------------
   // Database host
   // ----------------------------------------------------------
+  //
+  // Local Docker:
+  //   PGHOST=postgres
+  //
+  // Azure:
+  //   PGHOST=<your-server>.postgres.database.azure.com
+  //
+  // ----------------------------------------------------------
 
-  // host:
-  //   process.env.PGHOST ||
-  //   'postgres',
   host:
-  process.env.PGHOST ||
-  'streamhive-postgres-2026.postgres.database.azure.com',
-  
+    process.env.PGHOST || 'postgres',
 
   // ----------------------------------------------------------
   // PostgreSQL port
@@ -46,36 +58,39 @@ const pool = new Pool({
   // ----------------------------------------------------------
 
   user:
-    process.env.PGUSER ||
-    'streamhive',
+    process.env.PGUSER || 'clipwave',
 
   // ----------------------------------------------------------
   // Database password
   // ----------------------------------------------------------
+  //
+  // IMPORTANT:
+  // The real password should be supplied through an
+  // environment variable / Azure secret.
+  //
+  // ----------------------------------------------------------
 
   password:
-    process.env.PGPASSWORD ||
-    'streamhive_pw',
+    process.env.PGPASSWORD || 'clipwave_pw',
 
   // ----------------------------------------------------------
   // Database name
   // ----------------------------------------------------------
 
   database:
-    process.env.PGDATABASE ||
-    'streamhive',
+    process.env.PGDATABASE || 'clipwave',
 
   // ----------------------------------------------------------
   // SSL
   // ----------------------------------------------------------
   //
   // Local Docker:
-  //     PGSSL=false
+  //   PGSSL=false
   //
-  // Azure:
-  //     PGSSL=true
+  // Azure PostgreSQL:
+  //   PGSSL=true
   //
-  // Azure PostgreSQL requires encrypted connections.
+  // Azure requires encrypted PostgreSQL connections.
   //
   // ----------------------------------------------------------
 
@@ -90,7 +105,7 @@ const pool = new Pool({
   // Connection pool
   // ----------------------------------------------------------
   //
-  // Reuses database connections rather than creating a new
+  // Reuses database connections instead of creating a new
   // connection for every HTTP request.
   //
   // This is important when the backend is horizontally scaled.
@@ -132,12 +147,7 @@ pool.on('error', (err) => {
 
 
 // ============================================================
-// OPTIONAL CONNECTION TEST
+// EXPORT CONNECTION POOL
 // ============================================================
-//
-// Used by server.js through waitForPostgres().
-// No connection is opened here unnecessarily.
-// ============================================================
-
 
 module.exports = pool;
