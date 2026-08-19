@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ClipWave — Discover videos</title><link rel="stylesheet" href="css/style.css?v=5"></head>
+<body>
+<div class="topbar"><a href="index.html" class="brand"><span class="hex"></span>ClipWave</a><div id="nav-actions" class="nav-links"></div></div>
+<div class="content-shell">
+  
+<aside class="sidebar">
+  <div class="sidebar-label">Navigation</div>
+  <a class="active" href="index.html"><span class="side-bullet"></span>Home</a><a class="" href="index.html"><span class="side-bullet"></span>Latest videos</a><a class="" href="index.html"><span class="side-bullet"></span>Discover</a><a href="upload.html"><span class="side-bullet"></span>Creator studio</a>
+    <div id="sidebar-auth"></div>
+</aside>
+  <main class="container" style="padding-top:0">
+    <section class="hero"><div class="eyebrow">Your video space</div><h1>Discover something worth watching.</h1>
+    <p>Explore fresh creator uploads, find new favourites and join the conversation.</p></section>
+    <div class="search-row">
+      <input id="search-input" type="text" placeholder="Search videos, titles or descriptions…">
+      <select id="genre-select"><option value="">All genres</option><option>Comedy</option><option>Music</option><option>Education</option><option>Gaming</option><option>Vlog</option><option>Sports</option><option>Tech</option><option>Other</option></select>
+      <button id="search-btn" class="pill primary">Search</button>
+    </div>
+    <div class="section-title">Latest videos <span class="count" id="result-count"></span></div>
+    <div class="grid" id="video-grid"></div>
+    <div id="empty-state" style="display:none" class="empty">There are no videos to show yet. Check back soon.</div>
+  </main>
+</div>
+<footer>ClipWave · video sharing platform</footer>
+<script src="js/api.js?v=5"></script><script src="js/dashboard.js?v=3"></script>
+<script>if (typeof renderSidebarAuth === 'function') renderSidebarAuth();</script>
+</body></html>

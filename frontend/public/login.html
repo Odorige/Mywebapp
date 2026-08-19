@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sign in — ClipWave</title><link rel="stylesheet" href="css/style.css?v=5"></head>
+<body>
+<div class="topbar"><a href="index.html" class="brand"><span class="hex"></span>ClipWave</a><div id="nav-actions" class="nav-links"></div></div>
+<div class="content-shell" style="max-width:1180px;">
+  <aside class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <a href="index.html"><span class="side-bullet"></span>Home</a>
+    <a href="index.html"><span class="side-bullet"></span>Latest videos</a>
+    <a href="index.html"><span class="side-bullet"></span>Discover</a>
+    <div id="sidebar-auth"></div>
+  </aside>
+  <main style="min-width:0;">
+<div class="auth-shell">
+  <div class="eyebrow">Member access</div><h1>Welcome back.</h1><div class="sub">Sign in to continue watching, rating and commenting on videos.</div>
+  <div id="msg"></div>
+  <form id="login-form">
+    <div class="field"><label for="email">Email address</label><input type="email" id="email" placeholder="you@example.com" required></div>
+    <div class="field"><label for="password">Password</label><input type="password" id="password" placeholder="Enter your password" required></div>
+    <button class="btn-block" type="submit">Sign in</button>
+  </form>
+  <div class="switch-link">New here? <a href="signup.html">Create a consumer account</a></div>
+  <div class="switch-link" style="font-size:.76rem;">Demo creator: <code>creator@clipwave.local</code> / <code>CreatorPass123!</code></div>
+</div>
+<script src="js/api.js?v=5"></script></div></main></div>
+<script src="js/auth.js?v=3"></script>
+<script>if (typeof renderSidebarAuth === 'function') renderSidebarAuth();</script>
+</body></html>

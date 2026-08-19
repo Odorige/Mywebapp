@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Creator Studio — ClipWave</title><link rel="stylesheet" href="css/style.css?v=5"></head>
+<body>
+<div class="topbar"><a href="index.html" class="brand"><span class="hex"></span>ClipWave</a><div id="nav-actions" class="nav-links"></div></div>
+<div class="content-shell">
+ 
+<aside class="sidebar">
+  <div class="sidebar-label">Navigation</div>
+  <a class="" href="index.html"><span class="side-bullet"></span>Home</a><a class="" href="index.html"><span class="side-bullet"></span>Latest videos</a><a class="" href="index.html"><span class="side-bullet"></span>Discover</a><a href="upload.html"><span class="side-bullet"></span>Creator studio</a>
+    <div id="sidebar-auth"></div>
+</aside>
+ <main class="container" style="padding-top:0">
+  <section class="hero"><div class="eyebrow">Creator studio</div><h1>Publish your next video.</h1><p>Add your video, describe it clearly and make it available to the ClipWave community.</p></section>
+  <div class="auth-shell" style="margin:0 0 40px;max-width:720px">
+   <div id="msg"></div><form id="upload-form">
+    <div class="field"><label for="title">Video title *</label><input type="text" id="title" placeholder="Give your video a clear title" required></div>
+    <div class="field"><label for="description">Description</label><textarea id="description" placeholder="Tell viewers what this video is about"></textarea></div>
+    <div class="field" style="display:flex;gap:12px"><div style="flex:1"><label for="publisher">Publisher</label><input type="text" id="publisher"></div><div style="flex:1"><label for="producer">Producer</label><input type="text" id="producer"></div></div>
+    <div class="field" style="display:flex;gap:12px"><div style="flex:1"><label for="genre">Genre</label><select id="genre"><option>Comedy</option><option>Music</option><option>Education</option><option>Gaming</option><option>Vlog</option><option>Sports</option><option>Tech</option><option>Other</option></select></div><div style="flex:1"><label for="age_rating">Age rating</label><select id="age_rating"><option>U</option><option selected>PG</option><option>12</option><option>12A</option><option>15</option><option>18</option></select></div></div>
+    <div class="field"><label for="video">Video file *</label><input type="file" id="video" accept="video/mp4,video/webm,video/quicktime,video/x-matroska" required></div>
+    <button class="btn-block" type="submit" id="submit-btn">Publish video</button>
+   </form>
+  </div>
+  <div class="section-title">Your published videos</div><div class="grid" id="my-videos"></div>
+ </main>
+</div>
+<script src="js/api.js?v=5"></script><script src="js/upload.js?v=3"></script>
+<script>if (typeof renderSidebarAuth === 'function') renderSidebarAuth();</script>
+</body></html>
